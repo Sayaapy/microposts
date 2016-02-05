@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
     following_relationships = following_relationships.find_by(followed_id: other_user.id)
     following_relationships.destroy if following_relationship
   end
+  
+  def feed_items
+    Micropost.where(user_id: following_user_ids + [self.id])
+  end
 end
