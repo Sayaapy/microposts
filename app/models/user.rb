@@ -13,18 +13,27 @@ class User < ActiveRecord::Base
                                      dependent: :destroy
   has_many :following_users, through: :following_relationships, source: :followed
   
+  
+  
   has_many :follower_relationships, class_name: "Relationship",
                                     foreign_key: "followed_id",
                                     dependent: :destroy
-  has_many :follower_users, through: :follower_relationships, source: :follower   
+  has_many :follower_users, through: :follower_relationships, source: :follower  
+  
+  
   
   def follow(other_user)
     following_relationships.find_or_create_by(followed_id: other_user.id)
   end
   
   def unfollow(other_user)
-    following_relationships = following_relationships.find_by(followed_id: other_user.id)
-    following_relationships.destroy if following_relationship
+    following_relationship = following_relationships.find_by(followed_id: other_user.id)
+    following_relationship.destroy if following_relationship
+  end
+  
+  
+  def following?(other_user)
+    following_users.include?(other_user)
   end
   
   def feed_items

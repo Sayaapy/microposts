@@ -19,6 +19,10 @@
    <% else %>
      <div class="center jumbotron">
          <h1>Welcome to the Microposts</h1>
-         <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+         <div class="row text-center">
+             <%= link_to(raw("<span class='glyphicon glyphicon-heart' aria-hidden='true'></span> <span class='glyphicon glyphicon-print' aria-hidden='true'></span> Sign up now! <span class='glyphicon glyphicon-print' aria-hidden='true'></span> <span class='glyphicon glyphicon-heart' aria-hidden='true'></span>"), 
+                     signup_path, 
+                     class: "btn btn-lg btn-primary") %>
+        </div>
      </div>
 <% end %>
