@@ -1,0 +1,32 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="followings_info">
+      <h1>
+        
+<%= gravatar_for @user %>
+
+        
+<%= @user.name %>
+
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+      <div class="row">
+
+<% if @user.following_relationships.any? %>
+
+      <h3>Followers (<%= @user.follower_relationships.count %>)</h3>
+      
+      <ol class="followers">
+        <% @followers.each do |user| %>
+          <%= render 'following', followed: user %>  
+        <% end %>
+      </ol>
+      
+    </div>
+    
+<% end %>
+
+  </div>
+</div>

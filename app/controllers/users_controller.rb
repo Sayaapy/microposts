@@ -31,11 +31,23 @@ class UsersController < ApplicationController
     else
       render "edit"
     end
-  end  
-    
+  end
+  
+  def followings
+    @user = User.find(params[:user_id])
+    @followings = @user.following_users
+  end
+  
+  def followers
+    @user = User.find(params[:user_id])
+    @followers = @user.follower_users
+  end
+  
   private
   
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+  
+ 
 end

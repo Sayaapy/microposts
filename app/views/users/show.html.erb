@@ -6,6 +6,10 @@
                 
                 <%= @user.name %>
             </h1> 
+            <span>
+               <%= link_to "view my Followings", user_followings_url(@user) %>
+               <%= link_to "view my Followers", user_followers_url(@user) %>
+             </span>
         </section>
     </aside>
     
